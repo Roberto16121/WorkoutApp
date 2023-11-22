@@ -2,19 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:WorkoutApp.XAML.Parts"
+            
              x:Class="WorkoutApp.MainPage"
              BackgroundColor="White">
-
-    <ScrollView>
+  
+        
+    <ScrollView VerticalOptions="FillAndExpand">
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Start">
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Start">
             <HorizontalStackLayout 
-                Padding="0,15,0,0"
-                HorizontalOptions="Center"
-                VerticalOptions="End"
-                Spacing="25">
+                        Padding="0,15,0,0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        HeightRequest="100"
+                        Spacing="25">   
                 <Button Text="Main"
                         WidthRequest="105"
                         HeightRequest="60"
@@ -37,10 +40,12 @@
                         FontSize="18"
                         x:Name="Workout_Bt"/>
             </HorizontalStackLayout>
+
             <controls:StartWorkoutUI x:Name="StartWorkoutUI"/>
             <controls:WeightAndStepsUI x:Name="WeightAndStepsUI"/>
-
+            <controls:EnterMeasurementUI x:Name="EnternMeasurementUI"/>
+            <controls:GymAttendanceUI x:Name="GymAttendaceUI"/>
+            <controls:EditTypesOfWorkoutUI x:Name="EditTypesOfWorkoutUI"/>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

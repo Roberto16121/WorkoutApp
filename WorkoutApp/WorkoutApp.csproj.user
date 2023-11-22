@@ -8,6 +8,18 @@
     <DefaultDevice>Pixel_6a_API_34</DefaultDevice>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="XAML\MeasurementsPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="XAML\Parts\EditTypesOfWorkoutUI.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="XAML\Parts\EnterMeasurementUI.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="XAML\Parts\GymAttendanceUI.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="XAML\Parts\StartWorkoutUI.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

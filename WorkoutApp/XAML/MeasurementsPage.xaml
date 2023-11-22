@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="WorkoutApp.XAML.MeasurementsPage"
+             Title="MeasurementsPage">
+    <ScrollView >
+        <VerticalStackLayout Padding="0,0,0,10">
+            <Button WidthRequest="150"
+                    HeightRequest="75"
+                    Text="Back"
+                    FontSize="Title"
+                    Clicked="GoBack_Event"/>
+            <Border WidthRequest="375"
+                HeightRequest="100"
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="2"
+                Stroke="Black">
+                <HorizontalStackLayout Spacing="30">
+                    <Label Padding="30,0,0,0"
+                Text="Units"
+                FontSize="20"
+                WidthRequest="215"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold"
+                HorizontalOptions="Start"
+                VerticalOptions="Center" />
+                    <Picker WidthRequest="100"
+                            HeightRequest="100"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="18"
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            x:Name="MeasurementPicker"
+                            SelectedIndexChanged="ChangeUnits_Event">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Metric</x:String>
+                                <x:String>Imperial</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+
+                    </Picker>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Weight-->
+            <Border WidthRequest="375"
+                    HeightRequest="100"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="2"
+                    Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label Padding="30,0,0,0"
+                            Text="Weight"
+                            FontSize="20"
+                            WidthRequest="215"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center" />
+                        <Entry WidthRequest="75"
+                                HeightRequest="100"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontSize="18"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                x:Name="MeasurementEntry"
+                                Keyboard="Numeric"
+                                TextChanged="MeasurementEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="WeightUnits"
+                           Text="Kg"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+
+            <!--Optional-->
+            <Border WidthRequest="275"
+                    HeightRequest="50"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="2"
+                    Stroke="Black">
+                <Label Text="Optionals"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Title"
+                       FontAttributes="Bold"/>
+
+            </Border>
+
+            <!--Biceps-->
+            <Border WidthRequest="375"
+                    HeightRequest="100"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="2"
+                    Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label Padding="30,0,0,0"
+                            Text="Biceps Circum."
+                            FontSize="20"
+                            WidthRequest="215"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center" />
+                        <Entry WidthRequest="75"
+                                HeightRequest="100"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontSize="18"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                x:Name="BicepsEntry"
+                                Keyboard="Numeric"
+                                TextChanged="BicesEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="BicepsUnits"
+                           Text="Cm"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Chest-->
+            <Border WidthRequest="375"
+            HeightRequest="100"
+            StrokeShape="RoundRectangle 20"
+            StrokeThickness="2"
+            Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label Padding="30,0,0,0"
+                    Text="Chest Circum."
+                    FontSize="20"
+                    WidthRequest="215"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center" />
+                        <Entry WidthRequest="75"
+                        HeightRequest="100"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        BackgroundColor="Transparent"
+                        FontAttributes="Bold"
+                        x:Name="ChestEntry"
+                        Keyboard="Numeric"
+                        TextChanged="ChestEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="ChestUnits"
+                   Text="Cm"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Waist-->
+            <Border WidthRequest="375"
+                    HeightRequest="100"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="2"
+                    Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label  Padding="30,0,0,0"
+                                Text="Waist Circum."
+                                FontSize="20"
+                                WidthRequest="215"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center" />
+                        <Entry  WidthRequest="75"
+                                HeightRequest="100"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontSize="18"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                x:Name="WaistEntry"
+                                Keyboard="Numeric"
+                                TextChanged="WaistEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="WaistUnits"
+                           Text="Cm"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Hips-->
+            <Border WidthRequest="375"
+            HeightRequest="100"
+            StrokeShape="RoundRectangle 20"
+            StrokeThickness="2"
+            Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label  Padding="30,0,0,0"
+                        Text="Hips Circum."
+                        FontSize="20"
+                        WidthRequest="215"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center" />
+                        <Entry  WidthRequest="75"
+                        HeightRequest="100"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="18"
+                        BackgroundColor="Transparent"
+                        FontAttributes="Bold"
+                        x:Name="HipsEntry"
+                        Keyboard="Numeric"
+                        TextChanged="HipsEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="HipsUnits"
+                   Text="Cm"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Thighs-->
+            <Border  WidthRequest="375"
+                     HeightRequest="100"
+                     StrokeShape="RoundRectangle 20"
+                     StrokeThickness="2"
+                     Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label   Padding="30,0,0,0"
+                                 Text="Thighs Circum."
+                                 FontSize="20"
+                                 WidthRequest="215"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 FontAttributes="Bold"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Center" />
+                        <Entry  WidthRequest="75"
+                                 HeightRequest="100"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 FontSize="18"
+                                 BackgroundColor="Transparent"
+                                 FontAttributes="Bold"
+                                 x:Name="ThighsEntry"
+                                 Keyboard="Numeric"
+                                 TextChanged="ThighsEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="ThighsUnits"
+                            Text="Cm"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Calves-->
+            <Border  WidthRequest="375"
+                     HeightRequest="100"
+                     StrokeShape="RoundRectangle 20"
+                     StrokeThickness="2"
+                     Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label   Padding="30,0,0,0"
+                         Text="Calves Circum."
+                         FontSize="20"
+                         WidthRequest="215"
+                         HorizontalTextAlignment="Center"
+                         VerticalTextAlignment="Center"
+                         FontAttributes="Bold"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center" />
+                        <Entry  WidthRequest="75"
+                         HeightRequest="100"
+                         HorizontalTextAlignment="Center"
+                         VerticalTextAlignment="Center"
+                         FontSize="18"
+                         BackgroundColor="Transparent"
+                         FontAttributes="Bold"
+                         x:Name="CalvesEntry"
+                         Keyboard="Numeric"
+                         TextChanged="CalvesEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label x:Name="CalvesUnits"
+                    Text="Cm"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Neck-->
+            <Border WidthRequest="375"
+                    HeightRequest="100"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="2"
+                    Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label   Padding="30,0,0,0"
+                                 Text="Neck Circum."
+                                 FontSize="20"
+                                 WidthRequest="215"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 FontAttributes="Bold"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Center" />
+                        <Entry   WidthRequest="75"
+                                 HeightRequest="100"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 FontSize="18"
+                                 BackgroundColor="Transparent"
+                                 FontAttributes="Bold"
+                                 x:Name="NeckEntry"
+                                 Keyboard="Numeric"
+                                 TextChanged="NeckEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label  x:Name="NeckUnits"
+                            Text="Cm"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Forearms-->
+            <Border WidthRequest="375"
+                    HeightRequest="100"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="2"
+                    Stroke="Black">
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label   Padding="30,0,0,0"
+                                 Text="Forearms Circum."
+                                 FontSize="20"
+                                 WidthRequest="215"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 FontAttributes="Bold"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Center" />
+                        <Entry   WidthRequest="75"
+                                 HeightRequest="100"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 FontSize="18"
+                                 BackgroundColor="Transparent"
+                                 FontAttributes="Bold"
+                                 x:Name="ForearmsEntry"
+                                 Keyboard="Numeric"
+                                 TextChanged="ForearmsEntry_TextChanged">
+                            <Entry.Behaviors>
+                                <toolkit:MaskedBehavior Mask="XXXX" UnmaskedCharacter="X" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </HorizontalStackLayout>
+                    <Label  x:Name="ForearmsUnits"
+                    Text="Cm"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="16"/>
+                </HorizontalStackLayout>
+            </Border>
+            <!--Error-->
+                <Border WidthRequest="375"
+                        HeightRequest="50"
+                        StrokeShape="RoundRectangle 20"
+                        StrokeThickness="0"
+                        Stroke="Transparent">
+                <Label x:Name="ErrorText"
+                       Text=""
+                       FontAttributes="Italic"
+                       FontSize="22"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="Red"/>
+
+            </Border>
+            <!--Save-->
+            <HorizontalStackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Button x:Name="SaveButton"
+                        Text="Save"
+                        WidthRequest="200"
+                        HeightRequest="100"
+                        FontSize="32"
+                        Clicked="SaveMeasurements_Event"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
