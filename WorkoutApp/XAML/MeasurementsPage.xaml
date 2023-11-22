@@ -446,6 +446,12 @@
                         HeightRequest="100"
                         FontSize="32"
                         Clicked="SaveMeasurements_Event"/>
+                <Button x:Name="Test"
+                        Text="Test"
+                        WidthRequest="200"
+                        HeightRequest="100"
+                        FontSize="32"
+                        Clicked="TestClicked"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

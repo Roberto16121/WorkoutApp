@@ -1,19 +1,23 @@
 using CommunityToolkit.Maui.Core.Platform;
 using System.Diagnostics;
+using WorkoutApp.Scripts;
 
 namespace WorkoutApp.XAML;
 
 public partial class MeasurementsPage : ContentPage
 {
+    WeightEntry entry = new WeightEntry();
 	public MeasurementsPage()
 	{
 		InitializeComponent();
 		MeasurementPicker.SelectedIndex= 0;
+        entry.Date = DateTime.Now;
 	}
 
 	void ChangeUnits_Event(object sender, EventArgs e)
 	{
 		ChangeTextUnits(MeasurementPicker.SelectedIndex);
+        entry.Units = MeasurementPicker.SelectedIndex;
 	}
 
 	void ChangeTextUnits(int i)
@@ -51,7 +55,8 @@ public partial class MeasurementsPage : ContentPage
         else
         {
             ErrorText.Text = "";
-            //Save Measurements
+            Save save = new Save();
+            save.SaveMeasurements(entry);
         }
     }
 
@@ -65,73 +70,151 @@ public partial class MeasurementsPage : ContentPage
     /// </summary>
     private void MeasurementEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
-		if(e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 5)
-            MeasurementEntry.Text = e.NewTextValue.Remove(0, 1);
+        if(e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
+
+        if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 5)
+        {
+            MeasurementEntry.Text = "0";
+            entry.Weight = 0;
+            return;
+        }
 		if(e.NewTextValue.Length == 5)
 			MeasurementEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Weight = double.Parse(MeasurementEntry.Text);
     }
 	void BicesEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            BicepsEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            BicepsEntry.Text = "0";
+            entry.Biceps = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             BicepsEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Biceps = double.Parse(BicepsEntry.Text);
     }
 
 	void ChestEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            ChestEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            ChestEntry.Text = "0";
+            entry.Chest = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             ChestEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Chest = double.Parse(ChestEntry.Text);
     }
 
 	void WaistEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            WaistEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            WaistEntry.Text = "0";
+            entry.Waist = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             WaistEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Waist = double.Parse(WaistEntry.Text);
     }
 
 	void HipsEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            HipsEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            HipsEntry.Text = "0";
+            entry.Hips = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             HipsEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Hips = double.Parse(HipsEntry.Text);
     }
 
 	void ThighsEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            ThighsEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            ThighsEntry.Text = "0";
+            entry.Thighs = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             ThighsEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Thighs = double.Parse(ThighsEntry.Text);
     }
 
 	void CalvesEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            CalvesEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            CalvesEntry.Text = "0";
+            entry.Calves = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             CalvesEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Calves = double.Parse(CalvesEntry.Text);
     }
 
 	void NeckEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            NeckEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            NeckEntry.Text = "0";
+            entry.Neck = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             NeckEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Neck = double.Parse(NeckEntry.Text);
     }
 
 	void ForearmsEntry_TextChanged(object sender, TextChangedEventArgs e)
 	{
+        if (e.NewTextValue == null || e.NewTextValue.Length <= 1)
+            return;
         if (e.NewTextValue.StartsWith("0") && e.NewTextValue.Length <= 4)
-            ForearmsEntry.Text = e.NewTextValue.Remove(0, 1);
+        {
+            ForearmsEntry.Text = "0";
+            entry.Forearms = 0;
+            return;
+        }
         if (e.NewTextValue.Length == 4)
             ForearmsEntry.HideKeyboardAsync(CancellationToken.None);
+
+        entry.Forearms = double.Parse(ForearmsEntry.Text);
     }
 
+    private void TestClicked(object sender, EventArgs e)
+    {
+        Load load = new Load();
+        load.LoadMeasurements();
+    }
 }
