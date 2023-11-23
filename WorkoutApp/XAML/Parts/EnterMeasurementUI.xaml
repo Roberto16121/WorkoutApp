@@ -26,7 +26,8 @@
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     WidthRequest="100"
-                    HeightRequest="55"/>
+                    HeightRequest="55"
+                    Clicked="Button_Clicked"/>
             </HorizontalStackLayout>
         </Border>
     </VerticalStackLayout>

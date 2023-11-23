@@ -10,10 +10,10 @@ namespace WorkoutApp.Scripts
 {
     internal class Load
     {
-        string Name = "Measurements.json";
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+        readonly string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
         public void LoadMeasurements()
         {
+            string Name = "Measurements.json";
             Name = Path.Combine(path, Name);
             if(File.Exists(Name))
             {
@@ -28,6 +28,14 @@ namespace WorkoutApp.Scripts
             {
                 Trace.WriteLine("File does not exist");
             }
+        }
+
+        public bool DoesFileExist(string name)
+        {
+            name = Path.Combine(path, name);
+            if(File.Exists(name))
+                return true;
+            return false;
         }
     }
 }

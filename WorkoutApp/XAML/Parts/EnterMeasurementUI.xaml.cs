@@ -6,4 +6,10 @@ public partial class EnterMeasurementUI : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+		App app = (App)Application.Current;
+		app.OpenPage(new MeasurementsPage());
+    }
 }

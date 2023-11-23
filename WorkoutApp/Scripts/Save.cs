@@ -8,12 +8,12 @@ namespace WorkoutApp.Scripts
     internal class Save
     {
         string Name = "Measurements.json";
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+        readonly string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
        
         public bool SaveMeasurements(WeightEntry entry)
         {
             Name = Path.Combine(path, Name);
-            List<WeightEntry> entries = new List<WeightEntry>();
+            List<WeightEntry> entries = new();
             if (File.Exists(Name))
             {
                 string json = File.ReadAllText(Name);
@@ -21,10 +21,8 @@ namespace WorkoutApp.Scripts
             }
             entries.Insert(0,entry);
             string newJson = JsonConvert.SerializeObject(entries);
-            using (StreamWriter writer = new StreamWriter(Name, false))
-            {
-                writer.Write(newJson);
-            }
+            using StreamWriter writer = new(Name, false);
+            writer.Write(newJson);
 
 
             return false;

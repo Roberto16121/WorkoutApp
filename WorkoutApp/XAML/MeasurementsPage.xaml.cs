@@ -6,7 +6,7 @@ namespace WorkoutApp.XAML;
 
 public partial class MeasurementsPage : ContentPage
 {
-    WeightEntry entry = new WeightEntry();
+    WeightEntry entry = new();
 	public MeasurementsPage()
 	{
 		InitializeComponent();
@@ -55,15 +55,22 @@ public partial class MeasurementsPage : ContentPage
         else
         {
             ErrorText.Text = "";
-            Save save = new Save();
+            Save save = new();
             save.SaveMeasurements(entry);
         }
     }
 
     void GoBack_Event(object sender, EventArgs e)
     {
-        //Navigation.PopModalAsync();
+        Load load = new();
+        if(load.DoesFileExist("Measurements.json"))
+        {
+            App app = (App)Application.Current;
+            app.ClosePage();
+        }
+        
     }
+
 
     /// <summary>
     /// Validate Input for Measurement Entry
@@ -80,7 +87,7 @@ public partial class MeasurementsPage : ContentPage
             return;
         }
 		if(e.NewTextValue.Length == 5)
-			MeasurementEntry.HideKeyboardAsync(CancellationToken.None);
+            _ = MeasurementEntry.HideKeyboardAsync(CancellationToken.None);
 
         entry.Weight = double.Parse(MeasurementEntry.Text);
     }
@@ -212,9 +219,4 @@ public partial class MeasurementsPage : ContentPage
         entry.Forearms = double.Parse(ForearmsEntry.Text);
     }
 
-    private void TestClicked(object sender, EventArgs e)
-    {
-        Load load = new Load();
-        load.LoadMeasurements();
-    }
 }
