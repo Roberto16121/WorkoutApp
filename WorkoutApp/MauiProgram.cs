@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using Microcharts.Maui;
+using SkiaSharp;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 namespace WorkoutApp;
 
 public static class MauiProgram
@@ -10,6 +13,8 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseMicrocharts()
+            .UseSkiaSharp() 
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

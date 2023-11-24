@@ -10,7 +10,17 @@ public partial class MeasurementsPage : ContentPage
 	public MeasurementsPage()
 	{
 		InitializeComponent();
-		MeasurementPicker.SelectedIndex= 0;
+        App app = (App)App.Current;
+        Load load = app.load;
+        if (load.DoesFileExist("Measurements.json"))
+        {
+            WeightEntry entry = load.LoadMeasurements()[0];
+            if(entry.Units == 0)
+                MeasurementPicker.SelectedIndex = 0;
+            else
+                MeasurementPicker.SelectedIndex = 1;
+        }
+        else MeasurementPicker.SelectedIndex = 0;
         entry.Date = DateTime.Now;
 	}
 
@@ -55,21 +65,14 @@ public partial class MeasurementsPage : ContentPage
         else
         {
             ErrorText.Text = "";
-            Save save = new();
+            App app = (App)App.Current;
+            Save save = app.save;
             save.SaveMeasurements(entry);
+            AppShell shell = (AppShell)App.Current.MainPage;
+            shell.ClosePage();
         }
     }
 
-    void GoBack_Event(object sender, EventArgs e)
-    {
-        Load load = new();
-        if(load.DoesFileExist("Measurements.json"))
-        {
-            App app = (App)Application.Current;
-            app.ClosePage();
-        }
-        
-    }
 
 
     /// <summary>

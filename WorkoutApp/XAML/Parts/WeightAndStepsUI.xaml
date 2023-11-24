@@ -41,7 +41,7 @@
 
                     <HorizontalStackLayout Spacing="10">
                         <Label x:Name="CurrentWeight" 
-                            Text="80kg"
+                            Text="-"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
@@ -54,7 +54,7 @@
                             BackgroundColor="Black"/>
 
                         <Label x:Name="GoalWeight"
-                            Text="70kg"
+                            Text="-"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
@@ -67,29 +67,29 @@
                     <Line WidthRequest="170"
                      HeightRequest="2"
                      BackgroundColor="Black"/>
-
-                    <HorizontalStackLayout Spacing="10">
+                    
+                    <HorizontalStackLayout Spacing="7">
                         <Label x:Name="CurrentWeightDate"
-                            Text="17.11.23"
+                            Text="-"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="83"/>
 
                         <Line HeightRequest="50"
                             WidthRequest="2"
                             BackgroundColor="Black"/>
 
                         <Label x:Name="GoalDate"
-                            Text="17.11.24"
+                            Text="-"
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            WidthRequest="80"/>
+                            WidthRequest="83"/>
 
                     </HorizontalStackLayout>
                 </VerticalStackLayout>

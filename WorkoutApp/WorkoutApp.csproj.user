@@ -29,5 +29,8 @@
     <MauiXaml Update="XAML\Parts\WeightAndStepsUI.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="XAML\WeightChartPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
 </Project>

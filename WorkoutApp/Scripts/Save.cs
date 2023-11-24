@@ -5,27 +5,32 @@ using Newtonsoft.Json;
 
 namespace WorkoutApp.Scripts
 {
-    internal class Save
+    public class Save
     {
         string Name = "Measurements.json";
         readonly string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
        
-        public bool SaveMeasurements(WeightEntry entry)
+        public void SaveMeasurements(WeightEntry entry)
         {
+            App app = (App)App.Current;
+            Load load = app.load;
             Name = Path.Combine(path, Name);
             List<WeightEntry> entries = new();
             if (File.Exists(Name))
             {
-                string json = File.ReadAllText(Name);
-                entries = JsonConvert.DeserializeObject<List<WeightEntry>>(json);
+                entries = load.entries;
+                if (entries[0].Date.DayOfYear == entry.Date.DayOfYear)
+                    entries[0] = entry;
+                else
+                    entries.Insert(0, entry);
             }
-            entries.Insert(0,entry);
+            else
+                entries.Insert(0,entry);
+            load.entries = entries;
             string newJson = JsonConvert.SerializeObject(entries);
             using StreamWriter writer = new(Name, false);
             writer.Write(newJson);
 
-
-            return false;
         }
     }
 }

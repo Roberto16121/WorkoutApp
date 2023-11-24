@@ -8,26 +8,36 @@ using System.Threading.Tasks;
 
 namespace WorkoutApp.Scripts
 {
-    internal class Load
+    public class Load
     {
         readonly string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
-        public void LoadMeasurements()
+        public List<WeightEntry> entries { get; set; } = new();
+        public List<WeightEntry> LoadMeasurements()
         {
             string Name = "Measurements.json";
             Name = Path.Combine(path, Name);
             if(File.Exists(Name))
             {
                 string json = File.ReadAllText(Name);
-                List<WeightEntry> entries = JsonConvert.DeserializeObject<List<WeightEntry>>(json);
+                entries = JsonConvert.DeserializeObject<List<WeightEntry>>(json);
                 foreach(WeightEntry entry in entries)
                 {
                     Trace.WriteLine(entry.Date);
                 }
+                return entries;
             }
             else
             {
                 Trace.WriteLine("File does not exist");
+                return null;
             }
+        }
+
+        public void DeleteFile(string name)
+        {
+            name = Path.Combine(path, name);
+            if(File.Exists(name))
+                File.Delete(name);
         }
 
         public bool DoesFileExist(string name)

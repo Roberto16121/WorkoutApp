@@ -1,7 +1,7 @@
 ﻿using System;
 
 [Serializable]
-struct WeightEntry
+public struct WeightEntry
 {
     public DateTime Date { get; set; }
     public int Units { get; set; }

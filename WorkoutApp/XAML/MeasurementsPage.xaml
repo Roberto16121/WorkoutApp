@@ -6,11 +6,7 @@
              Title="MeasurementsPage">
     <ScrollView >
         <VerticalStackLayout Padding="0,0,0,10">
-            <Button WidthRequest="150"
-                    HeightRequest="75"
-                    Text="Back"
-                    FontSize="Title"
-                    Clicked="GoBack_Event"/>
+           
             <Border WidthRequest="375"
                 HeightRequest="100"
                 StrokeShape="RoundRectangle 20"
